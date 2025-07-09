@@ -8,11 +8,13 @@ import {
     FiX,
     FiCheckCircle,
     FiInfo,
-} from "react-icons/fi"; // 1. Tambahkan impor ikon untuk Toast
+} from "react-icons/fi"; //Tambahkan impor ikon untuk Toast
 import { FaStar } from "react-icons/fa";
 import { debounce } from "lodash";
 
-// 2. Tambahkan Komponen Notifikasi Toast
+//6DFzabFbsYsXJrA
+//MySQL Host Name=
+// Tambahkan Komponen Notifikasi Toast
 const Toast = ({ message, show, onHide, type = "success" }) => {
     useEffect(() => {
         if (show) {
@@ -232,6 +234,7 @@ const Pagination = ({ links }) => {
         </div>
     );
 };
+
 
 // Komponen utama halaman Shop
 export default function Index({
