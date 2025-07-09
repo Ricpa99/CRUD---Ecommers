@@ -1,9 +1,62 @@
 import React, { useState, useEffect, useRef } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, usePage, router } from "@inertiajs/react";
-import { FiSearch, FiChevronDown, FiShoppingCart } from "react-icons/fi";
+import {
+    FiSearch,
+    FiChevronDown,
+    FiShoppingCart,
+    FiX,
+    FiCheckCircle,
+    FiInfo,
+} from "react-icons/fi"; // 1. Tambahkan impor ikon untuk Toast
 import { FaStar } from "react-icons/fa";
 import { debounce } from "lodash";
+
+// 2. Tambahkan Komponen Notifikasi Toast
+const Toast = ({ message, show, onHide, type = "success" }) => {
+    useEffect(() => {
+        if (show) {
+            const timer = setTimeout(() => onHide(), 4000);
+            return () => clearTimeout(timer);
+        }
+    }, [show, onHide]);
+
+    const isSuccess = type === "success";
+    return (
+        <div
+            className={`fixed top-5 right-5 bg-white shadow-lg rounded-lg p-4 z-50 transition-all duration-300 ease-in-out max-w-sm w-full ${
+                show
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-full opacity-0"
+            }`}
+        >
+            <div className="flex items-start">
+                <div className="flex-shrink-0">
+                    {isSuccess ? (
+                        <FiCheckCircle className="h-6 w-6 text-green-500" />
+                    ) : (
+                        <FiInfo className="h-6 w-6 text-blue-500" />
+                    )}
+                </div>
+                <div className="ml-3 w-0 flex-1 pt-0.5">
+                    <p className="text-sm font-bold text-gray-900">
+                        {isSuccess ? "Success" : "Information"}
+                    </p>
+                    <p className="mt-1 text-sm text-gray-600">{message}</p>
+                </div>
+                <div className="ml-4 flex-shrink-0 flex">
+                    <button
+                        onClick={onHide}
+                        className="inline-flex text-gray-400 hover:text-gray-500"
+                    >
+                        <FiX size={20} />
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 
 // Komponen Dropdown Kustom
 const CustomSelect = ({
@@ -180,17 +233,23 @@ const Pagination = ({ links }) => {
     );
 };
 
-// Komponen utama halaman Shop 
+// Komponen utama halaman Shop
 export default function Index({
     auth,
     products,
     categories = [],
     filters = {},
 }) {
+    const { flash } = usePage().props;
     const [searchTerm, setSearchTerm] = useState(filters.search || "");
     const [selectedCategory, setSelectedCategory] = useState(
         filters.category || ""
     );
+    const [toastMessage, setToastMessage] = useState("");
+    const [showToast, setShowToast] = useState(false);
+
+    // 1. Tambahkan ref untuk menandai initial mount
+    const isInitialMount = useRef(true);
 
     const categoryOptions = [
         { value: "", label: "All Categories" },
@@ -198,23 +257,55 @@ export default function Index({
     ];
 
     useEffect(() => {
+        if (flash?.message) {
+            setToastMessage(flash.message);
+            setShowToast(true);
+        }
+    }, [flash]);
+
+    // 2. Modifikasi useEffect untuk filter dan pencarian
+    useEffect(() => {
+        // Jika ini adalah render pertama, jangan lakukan apa-apa.
+        // Cukup ubah penanda menjadi false dan keluar dari effect.
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+            return;
+        }
+
+        // Debounce akan berjalan hanya untuk perubahan berikutnya (saat user mengetik/memfilter).
         const debouncedSearch = debounce(() => {
             const params = { search: searchTerm, category: selectedCategory };
+            
+            // Hapus parameter yang kosong
             Object.keys(params).forEach(
-                (key) => params[key] === "" && delete params[key]
+                (key) => (params[key] === "" || params[key] == null) && delete params[key]
             );
+
             router.get(route("shop.index"), params, {
                 preserveState: true,
+                preserveScroll: true, // Mencegah scroll ke atas saat memfilter
                 replace: true,
             });
         }, 300);
+
         debouncedSearch();
-        return () => debouncedSearch.cancel();
-    }, [searchTerm, selectedCategory]);
+
+        // Bersihkan debounce saat komponen unmount atau effect berjalan lagi
+        return () => {
+            debouncedSearch.cancel();
+        };
+    }, [searchTerm, selectedCategory]); // Effect ini hanya bergantung pada perubahan filter
 
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Shop" />
+            
+            <Toast
+                message={toastMessage}
+                show={showToast}
+                onHide={() => setShowToast(false)}
+            />
+
             <div className="py-8">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="mb-5">
