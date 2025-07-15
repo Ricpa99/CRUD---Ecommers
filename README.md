@@ -1,61 +1,134 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# CRUD-Ecommers
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#### 🔍 Ringkasan Proyek
+CRUD-Ecommers adalah sebuah proyek aplikasi e-commerce dasar yang berfokus pada fungsionalitas CRUD (Create, Read, Update, Delete) untuk manajemen produk dan kategori. Proyek ini dibangun menggunakan Laravel 10/11 sebagai backend yang kuat dan efisien.
 
-## About Laravel
+Yang membedakan proyek ini adalah penggunaan Laravel Breeze untuk sistem otentikasi, yang diintegrasikan secara mulus dengan React.js sebagai frontend untuk antarmuka pengguna yang dinamis dan interaktif. Untuk styling, proyek ini memanfaatkan Tailwind CSS, memungkinkan pengembangan antarmuka yang cepat dan responsif. Lingkungan database lokal diatur melalui XAMPP, yang menyediakan MySQL sebagai database dan Apache sebagai web server.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Proyek ini bertujuan untuk mendemonstrasikan bagaimana teknologi full-stack modern dapat digabungkan untuk membangun aplikasi e-commerce yang fungsional dan responsif
+Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
+AngularJS-powered HTML5 Markdown editor.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur Utama
+Proyek ini menyediakan fitur-fitur dasar e-commerce yang interaktif, memanfaatkan kombinasi Laravel, React.js, dan Tailwind CSS:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Manajemen Produk (CRUD)
+- Buat (Create): Menambahkan produk baru (nama, deskripsi, harga, gambar, kategori, dll.) melalui formulir React yang berinteraksi dengan API Laravel.
+- Baca (Read): Menampilkan daftar produk dan detail produk dengan tampilan yang dinamis dan responsif.
+- Perbarui (Update): Mengedit informasi produk yang sudah ada melalui antarmuka React.
 
-## Learning Laravel
+Manajemen Kategori (CRUD)
+- Kemampuan untuk melihat data product berdasarkan kategori
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Sistem Otentikasi (Laravel Breeze)
+- Login & Registrasi: Fungsionalitas login dan registrasi pengguna/admin.
+- Dashboard Terlindungi: Area dashboard yang hanya dapat diakses setelah otentikasi.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Tampilan Produk Interaktif
+- Pengguna dapat menelusuri produk dengan filtering atau sorting yang responsif menggunakan tailwindcss dan react.js.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Teknologi yang Digunakan
+Backend:
+- Laravel Framework (11): Kerangka kerja PHP untuk logika dan manajemen database.
+- PHP: Bahasa pemrograman inti.
+- MySQL: Sistem manajemen database (disediakan oleh XAMPP).
 
-## Laravel Sponsors
+Frontend:
+- React.js: Pustaka JavaScript untuk membangun antarmuka pengguna yang dinamis.
+- Tailwind CSS: Framework CSS berbasis utilitas untuk styling yang cepat dan responsif.
+- Laravel Breeze: Paket otentikasi Laravel dengan scaffolding React.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Lingkungan Pengembangan:
+- XAMPP: Lingkungan pengembangan cross-platform (Apache, MySQL, PHP, Perl).
 
-### Premium Partners
+## Struktur Proyek
+Struktur direktori proyek mengikuti standar Laravel, dengan penambahan khusus untuk integrasi React.js dan Tailwind CSS:
+```
+├── app/                  # Logika inti aplikasi (Models, Controllers, Providers)
+├── bootstrap/            # File bootstrapping Laravel
+├── config/               # File konfigurasi aplikasi
+├── database/             # Migrasi database, seeder, factory
+├── public/               # Direktori root web (aset publik, index.php)
+├── resources/
+│   ├── js/               # **Direktori utama untuk komponen React.js**
+│   │   ├── Components/   # Komponen React yang dapat digunakan kembali
+│   │   ├── Layouts/      # Layout React
+│   │   └── Pages/        # Halaman React (misal: Auth, ProductList)
+│   ├── css/
+│   │   └── app.css       # File CSS utama (deklarasi @tailwind)
+│   └── views/            # Tampilan Blade Laravel (wadah untuk aplikasi React)
+├── routes/               # Definisi rute aplikasi (web, api, console)
+├── storage/              # File yang dihasilkan Laravel (log, cache, unggahan)
+├── vendor/               # Dependensi Composer
+├── node_modules/         # Dependensi Node.js (React, Tailwind, dll.)
+├── .env                  # File konfigurasi lingkungan
+├── composer.json         # Dependensi PHP
+├── package.json          # Dependensi Node.js
+└── README.md             # File ini
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🔧 Instalasi dan Penggunaan
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek ini di lingkungan lokal Anda:
+#### 1. Persyaratan Sistem
+- XAMPP: Pastikan Apache dan MySQL berjalan.
+- PHP: Versi 8.x (sesuai dengan Laravel 10/11).
+- Composer: Manajer paket PHP.
+- Node.js & npm/Yarn: Untuk mengelola dependensi JavaScript.
 
-## Contributing
+#### 2. Kloning Repositori
+```sh
+git clone https://github.com/Ricpa99/CRUD-Ecommers.git
+cd CRUD-Ecommers
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### 3. Konfigurasi Backend (Laravel)
+- Instal Dependensi Composer:
+```sh
+composer install
+```
+- Salin File Lingkungan:
+```sh
+ cp .env.example .env
+```
+- Buat Kunci Aplikasi:
+```sh
+php artisan key:generate
+```
+- Konfigurasi Database (.env):
+Buka file .env dan sesuaikan pengaturan database Anda. Contoh untuk XAMPP:
+```sh
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database_anda # Ganti dengan nama database yang Anda buat
+DB_USERNAME=root
+DB_PASSWORD=
+```
+- Jalankan Migrasi Database:
+```sh
+php artisan migrate
+```
 
-## Code of Conduct
+_Opsional: Jika Anda memiliki seeder untuk data awal, jalankan:_
+```sh
+php artisan db:seed
+```
+- Jalankan Server Laravel:
+```sh
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 4. Konfigurasi Frontend (React.js & Tailwind CSS)
+- Instal Dependensi Node.js:
+```sh
+npm install # atau yarn install
+```
+- Kompilasi Aset Frontend:
+```sh
+npm run dev # atau yarn dev (untuk pengembangan dengan hot-reloading)
+# atau npm run build (untuk produksi)
+```
+Ini akan mengkompilasi komponen React dan aset Tailwind CSS Anda.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 5. Akses Aplikasi
+Buka browser Anda dan kunjungi URL yang dihasilkan oleh php artisan serve (biasanya http://127.0.0.1:8000). Anda akan melihat aplikasi e-commerce Anda berjalan dengan frontend React.js dan styling Tailwind CSS.
