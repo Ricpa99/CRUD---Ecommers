@@ -78,7 +78,7 @@ export default function CheckoutIndex({ auth, cartItems, orderSummary }) {
                                     </div>
                                     <div className="md:col-span-2">
                                         <InputLabel htmlFor="address" value="Address" />
-                                        <TextInput maxLength="20" id="address" value={data.address} onChange={e => setData('address', e.target.value)} className="mt-1 block w-full" required />
+                                        <TextInput maxLength="150" id="address" value={data.address} onChange={e => setData('address', e.target.value)} className="mt-1 block w-full" required />
                                         <InputError message={errors.address} className="mt-2" />
                                     </div>
                                     <div>

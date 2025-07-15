@@ -49,7 +49,7 @@ export default function Authenticated({ user, header, children }) {
                 <div className="h-16 flex items-center justify-center border-b border-gray-200 px-4">
                     <Link href="/" className={`flex items-center gap-2 text-xl font-bold text-gray-800 transition-opacity duration-200 whitespace-nowrap ${!sidebarOpen && 'opacity-0 w-0 hidden'}`}>
                         <FiShoppingBag className="text-indigo-600" />
-                        <span>DummyJSON Store</span>
+                        <span> Belanja Store</span>
                     </Link>
                     <Link href="/" className={`text-2xl font-bold text-gray-800 transition-opacity duration-200 ${sidebarOpen && 'hidden'}`}>
                          <FiShoppingBag className="text-indigo-600" />
