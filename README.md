@@ -9,7 +9,7 @@ Proyek ini bertujuan untuk mendemonstrasikan bagaimana teknologi full-stack mode
 Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
 AngularJS-powered HTML5 Markdown editor.
 
-## ✨ Fitur Utama
+### ✨ Fitur Utama
 Proyek ini menyediakan fitur-fitur dasar e-commerce yang interaktif, memanfaatkan kombinasi Laravel, React.js, dan Tailwind CSS:
 
 Manajemen Produk (CRUD)
@@ -27,7 +27,7 @@ Sistem Otentikasi (Laravel Breeze)
 Tampilan Produk Interaktif
 - Pengguna dapat menelusuri produk dengan filtering atau sorting yang responsif menggunakan tailwindcss dan react.js.
 
-## 🚀 Teknologi yang Digunakan
+### 🚀 Teknologi yang Digunakan
 Backend:
 - Laravel Framework (11): Kerangka kerja PHP untuk logika dan manajemen database.
 - PHP: Bahasa pemrograman inti.
@@ -41,7 +41,7 @@ Frontend:
 Lingkungan Pengembangan:
 - XAMPP: Lingkungan pengembangan cross-platform (Apache, MySQL, PHP, Perl).
 
-## Struktur Proyek
+### Struktur Proyek
 Struktur direktori proyek mengikuti standar Laravel, dengan penambahan khusus untuk integrasi React.js dan Tailwind CSS:
 ```
 ├── app/                  # Logika inti aplikasi (Models, Controllers, Providers)
@@ -67,7 +67,7 @@ Struktur direktori proyek mengikuti standar Laravel, dengan penambahan khusus un
 └── README.md             # File ini
 ```
 
-## 🔧 Instalasi dan Penggunaan
+### 🔧 Instalasi dan Penggunaan
 Ikuti langkah-langkah di bawah ini untuk menjalankan proyek ini di lingkungan lokal Anda:
 #### 1. Persyaratan Sistem
 - XAMPP: Pastikan Apache dan MySQL berjalan.
@@ -75,13 +75,13 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek ini di lingkungan lo
 - Composer: Manajer paket PHP.
 - Node.js & npm/Yarn: Untuk mengelola dependensi JavaScript.
 
-#### 2. Kloning Repositori
+### 2. Kloning Repositori
 ```sh
 git clone https://github.com/Ricpa99/CRUD-Ecommers.git
 cd CRUD-Ecommers
 ```
 
-#### 3. Konfigurasi Backend (Laravel)
+### 3. Konfigurasi Backend (Laravel)
 - Instal Dependensi Composer:
 ```sh
 composer install
@@ -118,7 +118,7 @@ php artisan db:seed
 php artisan serve
 ```
 
-## 4. Konfigurasi Frontend (React.js & Tailwind CSS)
+### 4. Konfigurasi Frontend (React.js & Tailwind CSS)
 - Instal Dependensi Node.js:
 ```sh
 npm install # atau yarn install
@@ -130,5 +130,5 @@ npm run dev # atau yarn dev (untuk pengembangan dengan hot-reloading)
 ```
 Ini akan mengkompilasi komponen React dan aset Tailwind CSS Anda.
 
-#### 5. Akses Aplikasi
+### 5. Akses Aplikasi
 Buka browser Anda dan kunjungi URL yang dihasilkan oleh php artisan serve (biasanya http://127.0.0.1:8000). Anda akan melihat aplikasi e-commerce Anda berjalan dengan frontend React.js dan styling Tailwind CSS.
